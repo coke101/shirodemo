@@ -56,7 +56,7 @@ public class DruidConfig {
         // 添加过滤规则
         bean.addUrlPatterns("/*");
         Map<String,String> initParams = new HashMap<>();
-        // 忽略过滤格式
+        // 忽略过滤格式,// 设置忽略请求
         initParams.put("exclusions","*.js, *.css, *.icon, *.png, *.jpg, /druid/*");
         bean.setInitParameters(initParams);
         return  bean;

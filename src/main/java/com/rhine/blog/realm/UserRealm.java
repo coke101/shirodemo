@@ -30,8 +30,9 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("执行授权");
-
+        // 获取 subject 认证主体
         Subject subject = SecurityUtils.getSubject();
+
         UserBean user = (UserBean)subject.getPrincipal();
         if(user != null){
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();

@@ -35,4 +35,13 @@ public class PermissionBean implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "PermissionBean{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

@@ -21,6 +21,9 @@ import java.util.Map;
 public class ShiroConfig {
 
     @Bean("hashedCredentialsMatcher")
+    /*
+    Shiro 提供了用于加密密码和验证密码服务的 CredentialsMatcher 接口，而 HashedCredentialsMatcher 正是 CredentialsMatcher 的一个实现类
+    * */
     public HashedCredentialsMatcher hashedCredentialsMatcher() {
         HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
         //指定加密方式为MD5
@@ -34,16 +37,22 @@ public class ShiroConfig {
     @Bean("userRealm")
     public UserRealm userRealm(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher matcher) {
         UserRealm userRealm = new UserRealm();
+        /*
+        注入父类的credentialsMatcher
+         */
         userRealm.setCredentialsMatcher(matcher);
         return userRealm;
     }
 
     @Bean
     public ShiroFilterFactoryBean shirFilter(@Qualifier("securityManager")DefaultWebSecurityManager securityManager) {
+        /*
+        ShiroFilterFactoryBean 来创建ShiroFilter
+         */
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
-        // 设置 SecurityManager
+        // 必须设置 SecurityManager
         bean.setSecurityManager(securityManager);
-
+        // 登录成功后要跳转的连接
         bean.setSuccessUrl("/main");
         // 设置登录跳转页面
         bean.setLoginUrl("/toLogin");

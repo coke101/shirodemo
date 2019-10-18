@@ -16,9 +16,11 @@ public class UserServiceImpl implements UserService {
     public UserBean findByName(String name) {
         // 查询用户是否存在
         UserBean bean = userMapper.findByName(name);
+        System.out.println(bean);
         if (bean != null) {
             // 查询用户信息、角色、权限
             bean = userMapper.findById(bean.getId());
+            System.out.println(bean);
         }
         return bean;
     }

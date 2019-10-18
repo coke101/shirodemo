@@ -32,4 +32,13 @@ public class RoleBean implements Serializable {
     public void setPermissions(Set<PermissionBean> permissions) {
         this.permissions = permissions;
     }
+
+    @Override
+    public String toString() {
+        return "RoleBean{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", permissions=" + permissions +
+                '}';
+    }
 }
